@@ -1,3 +1,15 @@
+# Coputer vision 2021 
+
+This repository is a modification of an original project created by yuanyuanli85.
+The goal of this is to use stacked hourglass network to detect keypoints of some objects from VISAPP2021 dataset.
+
+##
+How to run demo using commited pretrained models
+
+```
+python demo.py --gpuID 0 --model_json ../../trained_models/mobile/net_arch_mobile.json  --model_weights ../../trained_models/mobile/mobile_weights_epoch99.h5  --conf_threshold 0.1 --input_image ../../images/sample.jpg
+```
+
 # Stacked_Hourglass_Network_Keras
 
 This is a Keras implementation for stacked hourglass network for single human pose estimation.  The stacked hourglass network was proposed by [Stacked Hourglass Networks for Human Pose Estimation] (https://arxiv.org/abs/1603.06937). The official implementation built on top of torch is released under [pose-hg-train](https://github.com/umich-vl/pose-hg-train), and pytorch version wrote by [berapaw](https://github.com/bearpaw) in repo [pytorch-pose](https://github.com/bearpaw/pytorch-pose). Most of code for image processing and evaluation come from above repos.
