@@ -15,6 +15,9 @@ import scipy.misc
 from data_process import normalize
 import numpy as np
 from eval_callback import EvalCallBack
+from imageio import imread
+import numpy
+from PIL import Image
 
 
 class HourglassNet(object):
@@ -85,7 +88,7 @@ class HourglassNet(object):
     def inference_rgb(self, rgbdata, orgshape, mean=None):
 
         scale = (orgshape[0] * 1.0 / self.inres[0], orgshape[1] * 1.0 / self.inres[1])
-        imgdata = scipy.misc.imresize(rgbdata, self.inres)
+        imgdata = numpy.array(Image.fromarray(rgbdata).resize(self.inres))
 
         if mean is None:
             mean = np.array([0.4404, 0.4440, 0.4327], dtype=np.float)
@@ -98,6 +101,6 @@ class HourglassNet(object):
         return out[-1], scale
 
     def inference_file(self, imgfile, mean=None):
-        imgdata = scipy.misc.imread(imgfile)
+        imgdata = imread(imgfile)
         ret = self.inference_rgb(imgdata, imgdata.shape, mean)
         return ret
